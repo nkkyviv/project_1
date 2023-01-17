@@ -1,23 +1,79 @@
 #include "project.h"
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <iterator>
 using namespace std;
 
-project::project() { std::cout << "constructor called"; }
-project::~project() { std::cout << "Destructor called"; }
+project::project() {}
+project::~project() {}
 
-void project::func1()
+void project::open()
 {
-    std::cout << "Function 1 is called" << std::endl;
+    fstream repFile;
+    repFile.open("Vivian.txt", ios::out);
+    if (repFile.is_open())
+    {
+        std::cout << "File is opened" << std::endl;
+    }
+    else if (!repFile.is_open())
+    {
+        std::cout << "File could not be opened" << std::endl;
+    }
 }
-void project::func2()
+void project::close()
 {
-    std::cout << "Function 2 is called" << std::endl;
+    fstream repFile;
+    repFile.close();
+    std::cout << "File is closed " << std::endl;
 }
-void project::func3()
+
+int project::write_line()
 {
-    std::cout << "Function 3 is called" << std::endl;
+    ofstream repFile("Vivian.txt");
+    repFile << "My file has a content";
+
+    return 0;
 }
-void project::func4()
+void project::read_line()
 {
-    std::cout << "Function 4 is called" << std::endl;
+    ifstream repFile("Vivian.txt", ios::in);
+    string data[1];
+    int num;
+    std::cout << "specify line of file:" << std::endl;
+    cin >> num;
+
+    for (int i = 0; i < num; i++)
+    {
+        getline(repFile, data[0]);
+        std::cout
+            << "This is the text in "
+            << "line" << i + 1 << "::" << data[i] << std::endl;
+    }
+}
+
+void project::read_container()
+{
+    std::ifstream repFile("Vivian.txt");
+    std::vector<std::string> vec;
+    std::string str;
+    while (repFile >> str)
+    {
+        vec.push_back(str); // push all contents of the file to the container
+    }
+    copy(vec.begin(), vec.end(), ostream_iterator<string>(cout, "\n")); // to print the container of the vector
+}
+
+void project::write_container()
+{
+    std::vector<std::string> vec;
+    std::string str;
+    cout << "Enter string:\n";
+    std::getline(std::cin >> ws, str);
+
+    vec.push_back(str);
+    for (int i = 0; i < vec.size(); i++)
+        std::cout << "Strings in the container are: \n"
+                  << vec[i] << std::endl;
 }

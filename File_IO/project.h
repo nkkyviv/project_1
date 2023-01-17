@@ -1,19 +1,19 @@
 #ifndef PROJECT_H
 #define PROJECT_H
+#include <string>
 
 class project
 {
-private:
-    project(const project &) = delete;            // uncopyable
-    project &operator=(const project &) = delete; // unassignable
 
 public:
     project();
     ~project();
 
-    void func1;
-    void func2;
-    void func3;
-    void func4;
+    void open();
+    int write_line();
+    void read_line();
+    void read_container();
+    void write_container();
+    void close();
 };
 #endif

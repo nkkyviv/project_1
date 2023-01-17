@@ -5,31 +5,17 @@
 #include <fstream>
 using namespace std;
 
-int main(void)
+int main(int argc, char *argv[])
 {
     project network;
 
-    std::vector<std::string> vec;
-    std::string str;
+    network.open();
+    network.write_line();
+    network.read_line();
+    network.write_container();
+    network.read_container();
 
-    std::cout << "Enter string!\n";
-    cin >> str;
-    vec.push_back(str);
-    for (int i = 0; i < vec.size(); i++)
-    {
-        std::cout << "my string" << vec[i] << "numbers.\n";
-    }
-    fstream rep_File;
-    rep_File.open("Vivian.txt", ios::in);
-    if (!rep_File)
-    {
-        cout << "File not created";
-    }
-    else
-    {
-        cout << "File is created";
-        rep_File.close();
-    }
+    network.close();
 
     return 0;
 }
