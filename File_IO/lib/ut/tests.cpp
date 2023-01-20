@@ -37,29 +37,3 @@ TEST(PhoneNumberChecks, ReturnErrorOnEmptyString)
     std::string output = SimplifyPhoneNumber(fakeNumber);
     EXPECT_EQ(output, expectedResult);
 }
-
-/*
- 2. Read Lines (all content) From file,
-    which doesn't exist, throws an Exception
-*/
-/*TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
-{
-    /* Your Input Data */
-std::string non_existing_file("fake_text.txt");
-{
-    std::ifstream checkStream(non_existing_file);
-    ASSERT_EQ(false, checkStream.is_open());
-}
-/* Your Expected Data */
-
-File_IO file; // Your File_IO class from library
-if (file.open(non_existing_file.c_str()))
-{
-    EXPECT_THROW(file.readLines(), std::runtime_error);
-}
-
-/* Your Logic of test case */
-
-/* Assert / Equal/ Checking/ Comparing /etc. */
-}
-* /
