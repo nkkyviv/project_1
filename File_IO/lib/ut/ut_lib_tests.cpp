@@ -92,8 +92,7 @@ TEST(File_IO_tests, CreateIfFileDoesnotExistOnWrite)
 
    std::ofstream checksum(write_file);
 
-   if (file.open())
-      file.write_line();
+   file.write_line();
    checksum << " Hello !\n This is good\n Hope it works\n ";
    checksum.close();
 
