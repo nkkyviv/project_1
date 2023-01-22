@@ -9,17 +9,16 @@ using namespace std;
 project::project() {}
 project::~project() {}
 
-void project::open()
+bool project::open()
 {
     fstream repFile;
+    bool status{false};
+
     repFile.open("Vivian.txt", ios::out);
     if (repFile.is_open())
     {
         std::cout << "File is opened" << std::endl;
-    }
-    else if (!repFile.is_open())
-    {
-        std::cout << "File could not be opened" << std::endl;
+        return true;
     }
 }
 void project::close()

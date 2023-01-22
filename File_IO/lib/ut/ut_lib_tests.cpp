@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 #include <project.h>
+#include <fstream>
+#include <stdexcept>
 
 /*
 Cover a case if we want to:
@@ -63,15 +65,40 @@ https://cplusplus.com/reference/exception/exception/exception/
 9. After "read" functions (if file doesn't exist) file should not exist.
 */
 
-TEST(File_IO_tests, /* test case name ( or number from list above : N1 , N2)*/ N1)
+TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
 {
    /* Your Input Data */
+   std::string non_existing_file("fake_text.txt");
+   {
+      std::ifstream checkStream(non_existing_file);
+      ASSERT_EQ(false, checkStream.is_open());
+   }
 
    /* Your Expected Data */
 
    project file; // Your File_IO class from library
 
+   if (file.open())
+   {
+      EXPECT_THROW(file.read_line(), std::exception);
+      EXPECT_THROW(file.read_container(), std::exception);
+   }
+
    /* Your Logic of test case */
 
    /* Assert / Equal/ Checking/ Comparing /etc. */
+}
+
+TEST(File_IO_tests, WriteLineTest)
+{
+   project file;
+   try
+   {
+      file.write_line("Vivian.txt", "Hello, this is my file", 1);
+   }
+   catch (const std::runtime_error &e)
+   {
+      std::cout << e.what() << std::endl;
+      return;
+   }
 }

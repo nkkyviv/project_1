@@ -9,7 +9,7 @@ public:
     project();
     ~project();
 
-    void open();
+    bool open();
     int write_line();
     void read_line();
     void read_container();
