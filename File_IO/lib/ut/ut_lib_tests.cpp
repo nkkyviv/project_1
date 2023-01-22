@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdexcept>
 
+project file; // Your File_IO class from library
 /*
 Cover a case if we want to:
 write a line into an empty file( file doesn't exist)
@@ -47,10 +48,6 @@ https://cplusplus.com/reference/exception/exception/exception/
 */
 
 /* List of Test cases to implement:
-1. Read Line From file, which doesn't exist,'
-   throws an Exception
-2. Read Lines (all content) From file,
-   which doesn't exist, throws an Exception
 3. Write Line to file, which doesn't exist, should create a file
 4. Write Lines (all content) to file,
    which doesn't exist, should create a file
@@ -64,6 +61,7 @@ https://cplusplus.com/reference/exception/exception/exception/
    the file should be closed. ( we can open it via C/C++ functions)
 9. After "read" functions (if file doesn't exist) file should not exist.
 */
+// Read Line and Lines (all content) From file, which doesn't exist, throws an Exception
 
 TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
 {
@@ -76,8 +74,6 @@ TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
 
    /* Your Expected Data */
 
-   project file; // Your File_IO class from library
-
    if (file.open())
    {
       EXPECT_THROW(file.read_line(), std::exception);
@@ -87,4 +83,27 @@ TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
    /* Your Logic of test case */
 
    /* Assert / Equal/ Checking/ Comparing /etc. */
+}
+
+TEST(File_IO_tests, CreateIfFileDoesnotExistOnWrite)
+{
+   /* Your Input Data */
+   std::string write_file("fake_text.txt", "w");
+
+   std::ofstream checksum(write_file);
+
+   if (file.open())
+      file.write_line();
+   checksum << " Hello !\n This is good\n Hope it works\n ";
+   checksum.close();
+
+   file.write_container();
+   checksum
+       << "Hello!\n This is good\n Hope it works\n";
+   std::string ExpectedText = "Hello!\n This is good\n Hope it works\n";
+   EXPECT_EQ(checksum, ExpectedText);
+
+   checksum.close();
+   EXPECT_EQ(checksum.is_open(), 0);
+   std::remove("Vivian.txt");
 }
