@@ -18,8 +18,9 @@ bool project::open()
     if (repFile.is_open())
     {
         std::cout << "File is opened" << std::endl;
-        return true;
+        status = true;
     }
+    return false;
 }
 void project::close()
 {

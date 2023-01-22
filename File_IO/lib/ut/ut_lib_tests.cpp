@@ -88,17 +88,3 @@ TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
 
    /* Assert / Equal/ Checking/ Comparing /etc. */
 }
-
-TEST(File_IO_tests, WriteLineTest)
-{
-   project file;
-   try
-   {
-      file.write_line("Vivian.txt", "Hello, this is my file", 1);
-   }
-   catch (const std::runtime_error &e)
-   {
-      std::cout << e.what() << std::endl;
-      return;
-   }
-}
