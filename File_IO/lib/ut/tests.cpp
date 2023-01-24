@@ -33,6 +33,7 @@ TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
 
     if (file_m.open())
     {
+        EXPECT_THROW(file_m.read_line(), std::runtime_error);
         EXPECT_THROW(file_m.read_container(), std::runtime_error);
     }
 
