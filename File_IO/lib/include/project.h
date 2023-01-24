@@ -1,19 +1,26 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 #include <string>
+#include <vector>
+#include <fstream>
 
-class project
+class FileIO
 {
+private:
+    std::string FileName;
+    std::ofstream Files;
+    std::ifstream File;
 
 public:
-    project();
-    ~project();
+    FileIO(const std::string &FileName) : FileName(FileName) {}
 
     bool open();
-    int write_line();
-    void read_line();
-    void read_container();
-    void write_container();
+    void write_line(const std::string &write);
+    std::string read_line();
+    std::vector<std::string> read_container();
+    void write_container(const std::vector<std::string> &writecont);
     void close();
+
+    FileIO::~FileIO() {}
 };
 #endif // FILE_IO_H
