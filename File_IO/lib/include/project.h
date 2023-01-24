@@ -21,6 +21,6 @@ public:
     void write_container(const std::vector<std::string> &writecont);
     void close();
 
-    FileIO::~FileIO() {}
+    ~FileIO() {}
 };
 #endif // FILE_IO_H

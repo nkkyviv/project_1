@@ -36,8 +36,8 @@ std::string FileIO::read_line()
     for (int i = 0; i < num; i++)
     {
         getline(File, data[0]);
-        return data[0];
     }
+    return data[0];
 }
 
 std::vector<std::string> FileIO::read_container()
