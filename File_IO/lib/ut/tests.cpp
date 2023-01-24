@@ -16,3 +16,27 @@ TEST(File_IO_tests, FileWriteTest)
         return;
     }
 }
+
+/*
+ 2. Read Lines (all content) From file,
+    which doesn't exist, throws an Exception
+*/
+TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
+{
+    /* Your Input Data */
+    std::string non_existing_file("fake_text.txt");
+    {
+        std::ifstream checkStream(non_existing_file);
+        ASSERT_EQ(false, checkStream.is_open());
+    }
+    /* Your Expected Data */
+
+    if (file_m.open(non_existing_file.c_str()))
+    {
+        EXPECT_THROW(file_m.read_container(), std::runtime_error);
+    }
+
+    /* Your Logic of test case */
+
+    /* Assert / Equal/ Checking/ Comparing /etc. */
+}
