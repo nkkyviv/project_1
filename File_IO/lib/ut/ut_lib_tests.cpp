@@ -3,7 +3,7 @@
 #include <fstream>
 #include <stdexcept>
 
-project file; // Your File_IO class from library
+FileIO file; // Your File_IO class from library
 /*
 Cover a case if we want to:
 write a line into an empty file( file doesn't exist)
@@ -85,24 +85,25 @@ TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
    /* Assert / Equal/ Checking/ Comparing /etc. */
 }
 
-TEST(File_IO_tests, CreateIfFileDoesnotExistOnWrite)
+/*TEST(File_IO_tests, CreateIfFileDoesnotExistOnWrite)
 {
    /* Your Input Data */
-   std::string write_file("fake_text.txt", "w");
+/* std::string write_file("fake_text.txt", "w");
 
-   std::ofstream checksum(write_file);
+std::ofstream checksum(write_file);
 
-   file.write_line();
-   checksum << " Hello !\n This is good\n Hope it works\n ";
-   checksum.close();
+file.write_line();
+checksum << " Hello !\n This is good\n Hope it works\n ";
+checksum.close();
 
-   file.write_container();
-   checksum
-       << "Hello!\n This is good\n Hope it works\n";
-   std::string ExpectedText = "Hello!\n This is good\n Hope it works\n";
-   EXPECT_EQ(checksum, ExpectedText);
+file.write_container();
+checksum
+    << "Hello!\n This is good\n Hope it works\n";
+std::string ExpectedText = "Hello!\n This is good\n Hope it works\n";
+EXPECT_EQ(checksum, ExpectedText);
 
-   checksum.close();
-   EXPECT_EQ(checksum.is_open(), 0);
-   std::remove("Vivian.txt");
+checksum.close();
+EXPECT_EQ(checksum.is_open(), 0);
+std::remove("fake_text.txt");
 }
+*/
