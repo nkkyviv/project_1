@@ -6,6 +6,8 @@
 #include <iterator>
 using namespace std;
 
+FileIO::FileIO(const std::string &FileName) : FileName(FileName) {}
+
 bool FileIO::open()
 {
     bool status{false};

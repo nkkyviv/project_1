@@ -12,7 +12,7 @@ private:
     std::ifstream File;
 
 public:
-    FileIO(const std::string &FileName) : FileName(FileName) {}
+    explicit FileIO(const std::string &FileName);
 
     bool open();
     void write_line(const std::string &write);

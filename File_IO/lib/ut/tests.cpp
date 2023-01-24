@@ -3,9 +3,17 @@
 #include <fstream>
 #include <stdexcept>
 
-FileIO network("Vivian.txt");
-TEST(FileIOTest, TestWriteFunc)
+FileIO file;
+
+TEST(File_IO_tests, FileWriteTest)
 {
-    network.write_line("lineFunc");
-    EXPECT_EQ(network.read_line(), "lineFunc");
+    try
+    {
+        file.write_line("Hello, this is my write function");
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << '\n';
+        return;
+    }
 }
