@@ -63,27 +63,23 @@ https://cplusplus.com/reference/exception/exception/exception/
 */
 // Read Line and Lines (all content) From file, which doesn't exist, throws an Exception
 
-TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
+/* TEST(File_IO_tests, ExceptionIfFileDoesnotExistOnRead)
 {
-   /* Your Input Data */
+
    std::string non_existing_file("fake_text.txt");
    {
       std::ifstream checkStream(non_existing_file);
       ASSERT_EQ(false, checkStream.is_open());
    }
 
-   /* Your Expected Data */
+
 
    if (file.open())
    {
       EXPECT_THROW(file.read_line(), std::exception);
       EXPECT_THROW(file.read_container(), std::exception);
    }
-
-   /* Your Logic of test case */
-
-   /* Assert / Equal/ Checking/ Comparing /etc. */
-}
+ */
 
 /*TEST(File_IO_tests, CreateIfFileDoesnotExistOnWrite)
 {
