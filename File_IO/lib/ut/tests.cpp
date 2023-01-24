@@ -31,7 +31,7 @@ TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
     }
     /* Your Expected Data */
 
-    if (file_m.open(non_existing_file.c_str()))
+    if (file_m.open())
     {
         EXPECT_THROW(file_m.read_container(), std::runtime_error);
     }
