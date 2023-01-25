@@ -4,6 +4,7 @@
 #include <stdexcept>
 FileIO file_m("Vivian.txt");
 
+// testing the write function.
 TEST(File_IO_tests, FileWriteTest)
 {
     try
@@ -36,8 +37,4 @@ TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
         EXPECT_THROW(file_m.read_line(), std::runtime_error);
         EXPECT_THROW(file_m.read_container(), std::runtime_error);
     }
-
-    /* Your Logic of test case */
-
-    /* Assert / Equal/ Checking/ Comparing /etc. */
 }
