@@ -41,13 +41,7 @@ def read_file(filename):
     with open(filename, 'r') as file_rd:
         buffer = json.load(file_rd)
         return buffer
-
-#another way to read the Jason dict
-#with open(jason,'r') as file_rd:
-    #file_read = json.load(file_rd)
-
-    #print(file_read)
-    #print(type(file_read))
+        
 with open(jason) as file_rd:
     jason_dict = json.load(file_rd)
     dict_jason = jason_dict
