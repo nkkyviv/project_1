@@ -30,16 +30,11 @@ void FileIO::write_line(const std::string &write)
 }
 std::string FileIO::read_line()
 {
-    string data[1];
-    int num;
-    std::cout << "specify line of file:" << std::endl;
-    cin >> num;
+    string data;
+    File.open(FileName);
+    getline(File, data);
 
-    for (int i = 0; i < num; i++)
-    {
-        getline(File, data[0]);
-    }
-    return data[0];
+    return data;
 }
 
 std::vector<std::string> FileIO::read_container()

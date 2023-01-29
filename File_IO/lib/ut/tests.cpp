@@ -2,22 +2,8 @@
 #include <project.h>
 #include <fstream>
 #include <stdexcept>
+
 FileIO file_m("Vivian.txt");
-
-// testing the write function.
-TEST(File_IO_tests, FileWriteTest)
-{
-    try
-    {
-        file_m.write_line("Hello, this is my write function");
-    }
-    catch (const std::exception &e)
-    {
-        std::cout << e.what() << '\n';
-        return;
-    }
-}
-
 /*
  2. Read Lines (all content) From file,
     which doesn't exist, throws an Exception
@@ -31,10 +17,18 @@ TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
         ASSERT_EQ(false, checkStream.is_open());
     }
     /* Your Expected Data */
-
     if (file_m.open())
     {
         EXPECT_THROW(file_m.read_line(), std::runtime_error);
         EXPECT_THROW(file_m.read_container(), std::runtime_error);
+    }
+}
+
+// testing the write function.
+TEST(File_IO_tests, FileWriteTest)
+{
+    if (file_m.open())
+    {
+        EXPECT_THROW(file_m.write_line("This is my little project"), std::runtime_error);
     }
 }
