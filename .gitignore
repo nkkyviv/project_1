@@ -16,4 +16,4 @@ build/
 **/todo.md
 
 #ignore our executable file
-*.txt
+
