@@ -24,9 +24,10 @@ class CAN_min_signals {
 		std::string set_humidity(uint8_t newValue); 
 
 	private:
-	 uint8_t m_startMsgID;
-	 uint8_t m_temperatureGetMsgID;
-	 uint8_t m_temperatureSetMsgID;
-	 uint8_t m_humidityGetMsgID;
-	 uint8_t m_humiditySetMsgID;};
+	 uint8_t m_startMsgId;
+	 uint8_t m_temperatureGetMsgId;
+	 uint8_t m_temperatureSetMsgId;
+	 uint8_t m_humidityGetMsgId;
+	 uint8_t m_humiditySetMsgId;
+};
 #endif //HEADER_MIN_SIGNALS_H
