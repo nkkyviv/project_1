@@ -6,6 +6,6 @@ add_subdirectory(File_IO)
 
 add_subdirectory(CAN_messages)
 
-message(STATUS "Generated Include path = ${CAN_INCLUDE_DIR}) , sources= ${CAN_SOURCES}")
+message(STATUS "Generated Include path = ${CAN_INCLUDE_DIR}),sources= ${CAN_SOURCES}")
 
 add_subdirectory(main_component)
