@@ -79,12 +79,13 @@ def generate_source_private_fields(json_dict):
     content = []
     CAN_id = json_dict["id"]
 
-    content.append(f'\t m_startMsgID = {CAN_id};\n')
+    content.append(f'\t m_startMsgId = {CAN_id};\n')
     for n, signals in zip([1, 2], json_dict["signals"]):
         content.append(
-            f'\t m_{signals["name"]}_GetMsgId = m_startMsgId + {2*n};\n')
+            f'\t m_{signals["name"]}GetMsgId = m_startMsgId + {2*n};\n')
         content.append(
-            f'\t m_{signals["name"]}SetMsgId = m_startMsgId + {2*n} + 1;\n')
+            f'\t m_{signals["name"]}SetMsgId = m_startMsgId + {2*n} + 1 ;\n')
+    content.append("}\n")
 
     return content
 
@@ -105,9 +106,9 @@ def function_to_generate_source(signal_name, signal_type, signal_length):
     output_data += '\tsstream << "{{\\"ID\\": " << m_{}SetMsgId\n'.format(
         signal_name)
     output_data += '\t\t\t<< ", \\"length\\":{} "\n'.format(signal_length)
-    output_data += '\t\t\t<< ", \\"value\\":\\"\n'
+    output_data += '\t\t\t<< ", \\"value\\": \\"\n'
     output_data += '\t\t\t<< newValue\n'
-    output_data += '\t\t\t<< \\"}";\n'
+    output_data += '\t\t\t<< \\" }";\n'
     output_data += "\treturn sstream.str();\n"
     output_data += "}\n"
 
