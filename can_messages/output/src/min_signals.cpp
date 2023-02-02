@@ -21,9 +21,9 @@ std::string CAN_min_signals::set_temperature(float newValue) {
 	std::stringstream sstream;
 	sstream << "{\"ID\": " << m_temperatureSetMsgId
 			<< ", \"length\":10 "
-			<< ", \"value\": \"
+			<< ", \"value\": \" "
 			<< newValue
-			<< \" }";
+			<< "\" }";
 	return sstream.str();
 }
 
@@ -39,8 +39,8 @@ std::string CAN_min_signals::set_humidity(uint8_t newValue) {
 	std::stringstream sstream;
 	sstream << "{\"ID\": " << m_humiditySetMsgId
 			<< ", \"length\":7 "
-			<< ", \"value\": \"
+			<< ", \"value\": \" "
 			<< newValue
-			<< \" }";
+			<< "\" }";
 	return sstream.str();
 }

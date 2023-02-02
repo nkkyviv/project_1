@@ -106,9 +106,9 @@ def function_to_generate_source(signal_name, signal_type, signal_length):
     output_data += '\tsstream << "{{\\"ID\\": " << m_{}SetMsgId\n'.format(
         signal_name)
     output_data += '\t\t\t<< ", \\"length\\":{} "\n'.format(signal_length)
-    output_data += '\t\t\t<< ", \\"value\\": \\"\n'
+    output_data += '\t\t\t<< ", \\"value\\": \\" "\n'
     output_data += '\t\t\t<< newValue\n'
-    output_data += '\t\t\t<< \\" }";\n'
+    output_data += '\t\t\t<< "\\" }";\n'
     output_data += "\treturn sstream.str();\n"
     output_data += "}\n"
 

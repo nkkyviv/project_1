@@ -4,7 +4,7 @@ PROJECT(PoC)
 
 add_subdirectory(File_IO)
 
-add_subdirectory(CAN_messages)
+add_subdirectory(can_messages)
 
 message(STATUS "Generated Include path = ${CAN_INCLUDE_DIR}),sources= ${CAN_SOURCES}")
 
