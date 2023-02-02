@@ -1,4 +1,4 @@
-#include "min_signals.h"
+#include "can_messages/min_signals.h"
 #include <sstream>
 
 CAN_min_signals::CAN_min_signals() {

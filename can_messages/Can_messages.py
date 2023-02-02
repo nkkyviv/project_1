@@ -148,7 +148,7 @@ def write_file(filename, data):
 
 if __name__ == "__main__":
     input_filename = "min_signals.json"
-    HeaderFile = "min_signals.h"
+    HeaderFile = "can_messages/min_signals.h"
     header_file = "output/include/can_messages/min_signals.h"
     source_file = "output/src/min_signals.cpp"
     json_dict = {}
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     json_filename = input_filename.replace(".json", "")
     print(json_filename)
 
-    Header = HeaderFile.replace(".h", "")
+    Header = "min_signals"
 
     header_function = generate_header(json_filename, json_dict)
     write_file(header_file, header_function)

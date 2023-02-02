@@ -4,6 +4,7 @@ project(abstractProj)
 
 #tells Cmake to search for header files in lib/include folder
 include_directories(lib/include)
+set(FILE_IO_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/include PARENT_SCOPE)
 
 set(SourcesLib lib/src/project.cpp)
 set(SourcesApp app/src/main.cpp)
