@@ -27,10 +27,10 @@ TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
 // testing the write function.
 TEST(File_IO_tests, FileWriteTest)
 {
-    if (file_m.open())
-    {
-        EXPECT_THROW(file_m.write_line("This is my little project"), std::runtime_error);
-    }
+    file_m.open();
+    std::string write = ("testing write line");
+    file_m.write_line(write);
+    EXPECT_THROW(file_m.write_line(write), std::exception);
 }
 
 // Testing the write function
