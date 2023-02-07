@@ -32,3 +32,21 @@ TEST(File_IO_tests, FileWriteTest)
         EXPECT_THROW(file_m.write_line("This is my little project"), std::runtime_error);
     }
 }
+
+// Testing the write function
+
+TEST(File_IO_tests, FileWriteLinesTest)
+{
+    file_m.open();
+    std::vector<std::string> write_lines = {"testing my write lines function", "for my FileIO component"};
+    file_m.write_container(write_lines);
+    int i = 0;
+    std::vector<std::string> read_lines = file_m.read_container();
+    for (auto input : read_lines)
+    {
+        std::cout << input << std::endl;
+        EXPECT_EQ(input, read_lines[i]);
+        i++;
+    }
+    file_m.close();
+}

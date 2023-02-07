@@ -20,7 +20,7 @@ bool FileIO::open()
 
         status = true;
     }
-    return false;
+    return status;
 }
 
 void FileIO::write_line(const std::string &write)
@@ -60,4 +60,5 @@ void FileIO::close()
 {
     File.close();
     Files.close();
+    std::cout << "File closed" << std::endl;
 }
