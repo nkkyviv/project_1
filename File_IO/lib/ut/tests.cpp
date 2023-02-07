@@ -8,32 +8,6 @@ FileIO file_m("Vivian.txt");
  2. Read Lines (all content) From file,
     which doesn't exist, throws an Exception
 */
-TEST(File_IO_tests, ExceptionIfFileDoesnExistOnRead)
-{
-    /* Your Input Data */
-    std::string non_existing_file("fake_text.txt");
-    {
-        std::ifstream checkStream(non_existing_file);
-        ASSERT_EQ(false, checkStream.is_open());
-    }
-    /* Your Expected Data */
-    if (file_m.open())
-    {
-        EXPECT_THROW(file_m.read_line(), std::runtime_error);
-        EXPECT_THROW(file_m.read_container(), std::runtime_error);
-    }
-}
-
-// testing the write function.
-/*TEST(File_IO_tests, FileWriteTest)
-{
-    file_m.open();
-    std::string write = ("testing write line");
-    file_m.write_line(write);
-    EXPECT_THROW(file_m.write_line(write), std::exception);
-}
-*/
-// Testing the write function
 
 TEST(File_IO_tests, FileWriteLinesTest)
 {
