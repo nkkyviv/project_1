@@ -11,7 +11,7 @@ FileIO file_m("Vivian.txt");
 
 TEST(File_IO_tests, FileWriteLinesTest)
 {
-    file_m.open();
+    file_m.open(true);
     std::vector<std::string> write_lines = {"testing my write lines function", "for my FileIO component"};
     file_m.write_container(write_lines);
     int i = 0;

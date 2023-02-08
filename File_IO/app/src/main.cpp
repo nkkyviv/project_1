@@ -7,17 +7,18 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    FileIO network("Vivian.txt");
+    FileIO fileio("Vivian.txt");
 
-    network.open();
+    fileio.open(true);
+    fileio.open(false);
 
     std::string write;
     std::cout << "Enter a line to be written:";
     std::getline(std::cin, write);
 
-    network.write_line(write);
+    fileio.write_line(write);
 
-    network.read_line();
+    fileio.read_line();
 
     std::vector<std::string> Inputs;
     std::string Input;
@@ -29,15 +30,15 @@ int main(int argc, char *argv[])
         std::cout << "Strings in the container are: \n"
                   << Inputs[i] << std::endl;
 
-    network.write_container(Inputs);
+    fileio.write_container(Inputs);
 
-    std::vector<std::string> ReadLines = network.read_container();
+    std::vector<std::string> ReadLines = fileio.read_container();
     for (const auto &str : Inputs)
     {
         std::cout << str << std::endl;
     }
 
-    network.close();
+    fileio.close();
 
     return 0;
 }

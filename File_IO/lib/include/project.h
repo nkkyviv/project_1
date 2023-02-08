@@ -14,7 +14,7 @@ private:
 public:
     explicit FileIO(const std::string &FileName);
 
-    bool open();
+    bool open(bool write);
     void write_line(const std::string &write);
     std::string read_line();
     std::vector<std::string> read_container();

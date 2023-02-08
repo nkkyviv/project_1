@@ -18,7 +18,7 @@ std::string parse_get_func_and_call(std::string line)
 std::string parse_set_func_and_call(std::string line)
 {
     const std::string set_keyword("set");
-    std::string result;
+    std::string result("TODO: FIX IT");
     size_t pos_of_set = line.find(set_keyword);
     size_t pos_start_signal_name = pos_of_set + set_keyword.size() + 1;
     // position of set plus the length of the "set" string plus extra whitespace
@@ -26,8 +26,11 @@ std::string parse_set_func_and_call(std::string line)
     std::string signal_name = line.substr(pos_start_signal_name, pos_of_separator - pos_start_signal_name);
 
     // ignore space we use +1
+    // starting from the first symbol after
+    // from total length -(position of first element + last element)
     std::string value = line.substr(pos_of_separator + 1);
 
+    std::cout << value.length() << std::endl;
     std::cout << "signal_name = |" << signal_name << "| value = |" << value << "|" << std::endl;
 
     if (signal_name.compare("temperature") == 0)
@@ -97,7 +100,7 @@ int main(int argc, char *argv[])
     std::string output_filename(argv[2]);
 
     FileIO input(input_filename);
-    input.open();
+
     std::vector<std::string> input_content = input.read_container();
 
     std::vector<std::string> output_content = convert(input_content); // to get an output
@@ -115,7 +118,7 @@ int main(int argc, char *argv[])
     final_output.emplace_back("\t]");
     final_output.emplace_back("}");
     FileIO output(output_filename);
-    output.open();
+
     output.write_container(final_output);
     input.close();
     output.close();
