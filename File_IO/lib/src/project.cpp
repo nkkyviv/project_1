@@ -36,7 +36,7 @@ bool FileIO::open(bool write = false)
 void FileIO::write_line(const std::string &write)
 {
     open(true);
-    Files << "My file has a content" << std::endl;
+    Files << write << std::endl;
 }
 std::string FileIO::read_line()
 {
