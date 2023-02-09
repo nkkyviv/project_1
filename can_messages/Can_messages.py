@@ -1,5 +1,7 @@
 import json
 import os
+from os import makedirs, path
+from argparse import ArgumentParser
 
 
 def gen_include_guard_class_decl_ctor(json_filename):
@@ -147,6 +149,23 @@ def write_file(filename, data):
 
 
 if __name__ == "__main__":
+    arg_parser = ArgumentParser(
+        description="This script reads json file and generates c++ code for header and source file")
+    arg_parser.add_argument("i", "--input", action="store",
+                            help="specify a path to read json file", required=True)
+    arg_parser.add_argument(
+        "-o", "--output_dir", action="store", help="output dir", default="./output")
+    arguments = arg_parser.parse_args()
+
+    print(f' input file = {arguments.input}')
+    print(f' output dir = {arguments.output_dir}')
+
+    makedirs(arguments.output_dir)
+    include_path = path.join(arguments.output_dir, "include", "can_messages")
+    makedirs(include_path)
+    src_path = path.join(arguments.output_dir, "src")
+    makedirs(src_path)
+
     input_filename = "min_signals.json"
     HeaderFile = "can_messages/min_signals.h"
     header_file = "output/include/can_messages/min_signals.h"

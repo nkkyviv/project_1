@@ -7,6 +7,8 @@
 #include <iterator>
 using namespace std;
 
+#define PRINT_DEBUG_LINE_INFO std::cout << __FUNCTION__ << " : " << __LINE__ << std::endl;
+
 std::string parse_get_func_and_call(std::string line)
 {
     std::string result;
@@ -65,6 +67,8 @@ std::vector<std::string> convert(std::vector<std::string> raw_input)
 {
     std::vector<std::string> output;
 
+    PRINT_DEBUG_LINE_INFO
+
     for (std::string &line : raw_input)
     {
         size_t pos_of_get = line.find("get");
@@ -96,10 +100,13 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    PRINT_DEBUG_LINE_INFO
     std::string input_filename(argv[1]);
     std::string output_filename(argv[2]);
 
     FileIO input(input_filename);
+
+    PRINT_DEBUG_LINE_INFO
 
     std::vector<std::string> input_content = input.read_container();
 
@@ -108,11 +115,14 @@ int main(int argc, char *argv[])
     // opening of the json output text file
     std::vector<std::string> final_output = {"{", "\t["};
     auto lineit = output_content.begin();
-    for (; std::next(lineit) != output_content.end(); ++lineit)
+    if (output_content.empty() != true)
     {
-        final_output.push_back(*lineit);
+        for (; std::next(lineit) != output_content.end(); ++lineit)
+        {
+            final_output.push_back(*lineit + ",");
+        }
+        final_output.push_back((*lineit));
     }
-    final_output.push_back((*lineit) + ",");
 
     // closing the json ouput file
     final_output.emplace_back("\t]");

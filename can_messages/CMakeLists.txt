@@ -1,8 +1,9 @@
+
 execute_process(
     # name
     #generate_sources_from_json
     # COMMAND cmd arg1, arg2 arg.....
-    COMMAND "python3" "Can_messages.py"
+    COMMAND "python3" "Can_messages.py" "i" "./min_signals.json" "-o" "./output" 
     # working directory -> our folder with CMAKELIST.TXT
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
