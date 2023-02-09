@@ -151,7 +151,7 @@ def write_file(filename, data):
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
         description="This script reads json file and generates c++ code for header and source file")
-    arg_parser.add_argument("i", "--input", action="store",
+    arg_parser.add_argument("-i", "--input", action="store",
                             help="specify a path to read json file", required=True)
     arg_parser.add_argument(
         "-o", "--output_dir", action="store", help="output dir", default="./output")
