@@ -1,7 +1,5 @@
 import json
 import os
-from os import makedirs, path
-from argparse import ArgumentParser
 
 
 def gen_include_guard_class_decl_ctor(json_filename):
@@ -50,8 +48,8 @@ def generate_private_fields(json_dict):
     Dtype = "uint8_t"
     content.append(f'\n\t {Dtype} m_startMsgId;')
     for signals in json_dict["signals"]:
-        content.append(f'\n\t {Dtype} m_{signals["name"]}GetMsgId;')
-        content.append(f'\n\t {Dtype} m_{signals["name"]}SetMsgId;')
+        content.append(f'\n\t {signals["type"]} m_{signals["name"]}GetMsgId;')
+        content.append(f'\n\t {signals["type"]} m_{signals["name"]}SetMsgId;')
 
     return content
 
@@ -105,11 +103,11 @@ def function_to_generate_source(signal_name, signal_type, signal_length):
     output_data += "\nstd::string CAN_{}::set_{}({} newValue) {{\n" .format(
         Header, signal_name, signal_type)
     output_data += "\tstd::stringstream sstream;\n"
-    output_data += '\tsstream << "{{\\"ID\\": " << m_{}SetMsgId\n'.format(
+    output_data += '\tsstream << "{{\\"ID\\": " << +m_{}SetMsgId\n'.format(
         signal_name)
     output_data += '\t\t\t<< ", \\"length\\":{} "\n'.format(signal_length)
     output_data += '\t\t\t<< ", \\"value\\": \\" "\n'
-    output_data += '\t\t\t<< newValue\n'
+    output_data += '\t\t\t<< +newValue\n'
     output_data += '\t\t\t<< "\\" }";\n'
     output_data += "\treturn sstream.str();\n"
     output_data += "}\n"

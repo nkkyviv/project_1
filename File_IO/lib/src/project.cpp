@@ -50,21 +50,23 @@ std::string FileIO::read_line()
 std::vector<std::string> FileIO::read_container()
 {
     open(false);
+    const int bufferSize = 256;
     std::vector<std::string> vec;
-    std::string str;
-    while (getline(File, str))
+    while (File.good())
     {
-        vec.push_back(str); // push all contents of the file to the container
+        char buffer[bufferSize] = {0};
+        File.getline(buffer, bufferSize - 1);
+        vec.emplace_back(buffer);
     }
     return vec;
 }
 
-void FileIO::write_container(const std::vector<std::string> &writecont)
+void FileIO::write_container(std::vector<std::string> writecont)
 {
     open(true);
-    for (const auto &write : writecont)
+    for (std::string Lines : writecont)
     {
-        Files << write << std::endl;
+        Files << Lines << std::endl;
     }
 }
 
