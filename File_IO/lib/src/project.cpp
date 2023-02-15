@@ -36,11 +36,22 @@ bool FileIO::open(bool write = false)
 void FileIO::write_line(const std::string &write)
 {
     open(true);
+    if (!Files)
+
+    {
+        throw std::runtime_error("Error: file does not exist");
+    }
     Files << write << std::endl;
 }
 std::string FileIO::read_line()
 {
     open(false);
+    if (!File)
+
+    {
+        throw std::runtime_error("Error: file does not exist");
+    }
+
     string data;
     getline(File, data);
 
