@@ -5,21 +5,7 @@
 
 FileIO file_m("Vivian.txt");
 // testing the Readlines(read container) function
-TEST(File_IO_tests, FileReadLinesTest)
-{
-    file_m.open(false);
-    int i = 0;
-    std::vector<std::string> read_lines = file_m.read_container();
-    for (auto input : read_lines)
-    {
-        std::cout << input << std::endl;
-        EXPECT_EQ(input, read_lines[i]);
-        i++;
-    }
-    file_m.close();
-}
-// testing the write container function
-TEST(File_IO_tests, OpenAndCloseTest)
+TEST(File_IO_tests, WriteAndReadTest)
 {
     // Open the file
     ASSERT_TRUE(file_m.open(true)); // Make sure the file is opened successfully
@@ -29,6 +15,17 @@ TEST(File_IO_tests, OpenAndCloseTest)
     file_m.write_container(inputs);
 
     // Close the file
+    file_m.close();
+
+    file_m.open(false);
+    std::vector<std::string> read_lines = file_m.read_container();
+
+    for (size_t index = 0; index < inputs.size(); ++index)
+        for (auto line : read_lines)
+        {
+            std::cout << line << std::endl;
+            EXPECT_EQ(line, inputs[index]);
+        }
     file_m.close();
 }
 
