@@ -3,10 +3,10 @@
 #include <fstream>
 #include <stdexcept>
 
-FileIO file_m("Vivian.txt");
 // testing the Readlines(read container) function
 TEST(File_IO_tests, WriteAndReadTest)
 {
+    FileIO file_m("Vivian.txt");
     // Open the file
     ASSERT_TRUE(file_m.open(true)); // Make sure the file is opened successfully
 
@@ -32,7 +32,8 @@ TEST(File_IO_tests, WriteAndReadTest)
 // Read a line from a non existing file
 TEST(File_IO_tests, NoneExistingFileReadLine)
 {
-    std::string non_existing_file("nonexistent_file.txt");
+    FileIO file_m("nonexistent_file.txt");
+
     try
     {
         file_m.read_line();
@@ -45,7 +46,7 @@ TEST(File_IO_tests, NoneExistingFileReadLine)
 // Read lines(all content) from a file which doesn't exists
 TEST(File_IO_tests, NoneExistingFileReadlines)
 {
-    std::string non_exiting_file("nonexistent_file.txt");
+    FileIO file_m("nonexistent_file.txt");
     try
     {
         file_m.read_container();
